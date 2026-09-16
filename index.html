@@ -1527,7 +1527,7 @@ function updateWalletUI(wallet){const el=document.getElementById('profileWalletB
   let forceTikTokAccountChooser=false;
   function startTikTokLogin(forceChooser){
     forceTikTokAccountChooser=forceChooser===true;
-    const params=new URLSearchParams({client_key:TIKTOK_CLIENT_KEY,scope:'user.info.basic,user.info.profile',response_type:'code',redirect_uri:TIKTOK_REDIRECT_URI,state:forceTikTokAccountChooser?'retzef_add_account':'retzef',disable_auto_auth:forceTikTokAccountChooser?'1':'0'});
+    const params=new URLSearchParams({client_key:TIKTOK_CLIENT_KEY,scope:'user.info.basic,user.info.profile',response_type:'code',redirect_uri:TIKTOK_REDIRECT_URI,state:forceTikTokAccountChooser?'retzef_add_account':'wallet',disable_auto_auth:forceTikTokAccountChooser?'1':'0'});
     window.location.assign('https://www.tiktok.com/v2/auth/authorize/?'+params.toString());
   }
   document.getElementById('consentYes').addEventListener('click', function(){closeConsentModal();startTikTokLogin(forceTikTokAccountChooser);});
