@@ -306,6 +306,18 @@ function updateWalletUI(wallet){const el=document.getElementById('profileWalletB
   .contact-card p{color:var(--muted); font-size:14px; margin-bottom:24px;}
 
   .fine{color:var(--muted); font-size:12.5px; margin-top:30px; text-align:center; padding-bottom:20px;}
+
+  body.wallet-focus-mode{background:var(--bg,#f3f4f9)}
+  body.wallet-focus-mode .wrap>header,body.wallet-focus-mode .tabs-nav,body.wallet-focus-mode .tab-panel,body.wallet-focus-mode footer{display:none!important}
+  .wallet-dashboard{max-width:620px;margin:0 auto;padding:34px 18px 60px;text-align:center;direction:rtl}
+  .wallet-dashboard .wallet-brand{display:flex;align-items:center;justify-content:center;gap:10px;font-size:22px;font-weight:900;margin-bottom:22px}
+  .wallet-dashboard .wallet-brand img{width:42px;height:42px;border-radius:12px}
+  .wallet-balance-card{padding:30px 20px;border-radius:26px;background:linear-gradient(135deg,#253b9b,#5b7df0);color:#fff;box-shadow:0 18px 45px rgba(37,59,155,.25)}
+  .wallet-balance-card .label{font-size:14px;opacity:.86}.wallet-balance-card .balance{font-size:48px;font-weight:900;margin:8px 0 2px}.wallet-balance-card .coin-label{font-size:15px;opacity:.9}
+  .wallet-login-required{margin:14px 0;padding:12px 14px;border-radius:14px;background:#fff1f2;color:#be123c;font-weight:800;font-size:13px;display:none}
+  .wallet-login-required.visible{display:block}.wallet-login-btn{width:100%;margin-top:18px;min-height:48px;border:0;border-radius:14px;background:#111827;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+  .wallet-actions{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.wallet-action-card{padding:20px;border-radius:20px;background:var(--bg2);border:1px solid var(--glass-border);text-align:right}.wallet-action-card h3{font-size:18px;margin-bottom:6px}.wallet-action-card p{color:var(--muted);font-size:13px;margin-bottom:12px}.wallet-action-card input{width:100%;box-sizing:border-box;padding:11px;border-radius:10px;border:1px solid var(--glass-border);background:var(--bg);color:var(--text);margin-bottom:8px;font:inherit}.wallet-action-card button{width:100%;padding:11px;border:0;border-radius:10px;background:var(--accent);color:#fff;font:inherit;font-weight:800;cursor:pointer}.wallet-message{font-size:12px;margin-top:8px;min-height:18px}.wallet-back-link{display:inline-block;margin-top:22px;color:var(--accent);font-weight:800;text-decoration:none}
+  @media(max-width:560px){.wallet-actions{grid-template-columns:1fr}.wallet-dashboard{padding-top:24px}.wallet-balance-card .balance{font-size:42px}}
   .apps-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px}
   .app-card{padding:22px;text-align:center;border:1px solid var(--glass-border);border-radius:20px;background:var(--bg2);box-shadow:0 12px 30px rgba(20,23,40,.08)}
   .app-card img{width:76px;height:76px;border-radius:20px;object-fit:cover;box-shadow:0 8px 20px rgba(20,23,40,.14);margin-bottom:12px}
@@ -505,7 +517,7 @@ function updateWalletUI(wallet){const el=document.getElementById('profileWalletB
   #retzefEntryGuest{background:transparent;color:var(--text,#161a26);border:1px solid var(--glass-border,rgba(20,23,40,.12))!important}
 </style>
 </head>
-<body>
+<body class="wallet-focus-mode">
 <div id="retzefSplash" aria-label="טוען את הארנק שלי רצף"><div class="retzef-splash-inner"><img class="retzef-splash-logo" src="/icons/icon-512.png" alt="לוגו הארנק שלי רצף"><div class="retzef-loading-track" aria-label="טוען"><div class="retzef-loading-bar"></div></div><div class="wallet-splash-info"><div class="wallet-splash-required"><span class="status-dot"></span> Login required · נדרשת התחברות</div><h2>הארנק שלי רצף</h2><p>התחברו כדי לראות את הנתונים האישיים שלכם</p><div class="wallet-splash-features"><div class="wallet-splash-feature">🪙<strong>—</strong><span>מטבעות</span></div><div class="wallet-splash-feature">🔄<strong>טרייד</strong><span>העברה בין משתמשים</span></div><div class="wallet-splash-feature">🎁<strong>קודים</strong><span>מימוש קוד</span></div></div></div></div></div>
 <div id="retzefEntryChoice" role="dialog" aria-modal="true" aria-labelledby="retzefEntryTitle"><div class="retzef-entry-card"><img src="/icons/icon-512.png" alt="לוגו רצף"><h1 id="retzefEntryTitle">ברוכים הבאים לרצף</h1><p>בחרו איך להיכנס לאפליקציה</p><div class="retzef-entry-actions"><button type="button" id="retzefEntryTikTok">התחברות עם TikTok</button><button type="button" id="retzefEntryGuest">המשך כאורח</button></div></div></div>
 
@@ -679,6 +691,18 @@ function updateWalletUI(wallet){const el=document.getElementById('profileWalletB
 
 <div class="wrap">
 
+
+  <main id="walletDashboard" class="wallet-dashboard">
+    <div class="wallet-brand"><img src="/icons/icon-192.png" alt="רצף"><span>הארנק שלי רצף</span></div>
+    <section class="wallet-balance-card" aria-live="polite"><div class="label">היתרה שלך</div><div id="walletFocusBalance" class="balance">—</div><div class="coin-label">🪙 מטבעות רצף</div></section>
+    <div id="walletFocusLoginRequired" class="wallet-login-required visible">🔐 Login required · נדרשת התחברות כדי לראות ולבצע פעולות בארנק</div>
+    <button id="walletFocusLogin" class="wallet-login-btn" type="button">התחברות עם TikTok</button>
+    <div class="wallet-actions">
+      <section class="wallet-action-card"><h3>🎁 קודים</h3><p>ממשו קוד והוסיפו מטבעות ליתרה.</p><input id="walletFocusGiftCode" placeholder="DHD..." maxlength="32" dir="ltr"><button id="walletFocusRedeem" type="button">מימוש קוד</button><div id="walletFocusRedeemMsg" class="wallet-message"></div></section>
+      <section class="wallet-action-card"><h3>🔄 טרייד</h3><p>העבירו מטבעות למשתמש אחר.</p><input id="walletFocusTradeUser" placeholder="שם משתמש לקבלה" dir="ltr"><input id="walletFocusTradeAmount" type="number" min="1" placeholder="כמות מטבעות"><button id="walletFocusTrade" type="button">שלח מטבעות</button><div id="walletFocusTradeMsg" class="wallet-message"></div></section>
+    </div>
+    <a class="wallet-back-link" href="https://retzef-pwa-public-helpme9284772-7829s-projects.vercel.app/" target="_blank" rel="noopener">🏠 לפתיחת אפליקציית רצף</a>
+  </main>
   <header>
     <div class="badge glass"><span class="dot"></span> <span data-i18n="hero_badge">קהילת רצף · TikTok</span></div>
     <p style="margin-top:8px; font-size:13px; color:var(--muted);">👑 <span data-i18n="hero_owner_label">בעלים</span>: <b style="color:var(--text);">הבאן המקורי</b></p>
@@ -2445,6 +2469,18 @@ function openPaypalModal(itemName, price){
     <button id="pwaInstallButton" type="button">התקן אפליקציה</button>
     <button id="pwaInstallDismiss" type="button" aria-label="סגור">×</button>
   </div>
+
+<script>
+(function walletFocusedDashboard(){
+  const balance=document.getElementById('walletFocusBalance'), required=document.getElementById('walletFocusLoginRequired'), login=document.getElementById('walletFocusLogin');
+  const setWallet=w=>{ if(!w)return; balance.textContent=Number(w.balance||0).toLocaleString(); required.classList.remove('visible'); login.style.display='none'; };
+  const load=async()=>{try{const r=await fetch('/api/profile?wallet='+Date.now(),{credentials:'include',cache:'no-store'});const d=await r.json();if(d.profile){window.__retzefProfile=d.profile;setWallet(d.profile.wallet);}}catch(_){}};
+  login.onclick=()=>{if(typeof startTikTokLogin==='function') startTikTokLogin(false);else document.getElementById('tiktokLoginBtn')?.click();};
+  document.getElementById('walletFocusRedeem').onclick=async()=>{const msg=document.getElementById('walletFocusRedeemMsg'),code=document.getElementById('walletFocusGiftCode').value.trim();if(!code){msg.textContent='❌ יש להזין קוד.';return;}try{const r=await fetch('/api/users',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'giftCodeRedeem',code})});const d=await r.json();if(r.ok&&d.wallet){setWallet(d.wallet);msg.textContent='✅ הקוד מומש והמטבעות נוספו.';}else msg.textContent=d.error==='tiktok_login_required'?'🔐 צריך להתחבר מחדש.':d.error==='already_redeemed'?'❌ הקוד כבר מומש.':'❌ הקוד לא נמצא או לא ניתן למימוש.';}catch(_){msg.textContent='❌ שגיאת חיבור.';}};
+  document.getElementById('walletFocusTrade').onclick=async()=>{const msg=document.getElementById('walletFocusTradeMsg'),username=document.getElementById('walletFocusTradeUser').value.trim(),amount=Number(document.getElementById('walletFocusTradeAmount').value);if(!username||!Number.isInteger(amount)||amount<1){msg.textContent='❌ הזינו משתמש וכמות תקינה.';return;}try{const r=await fetch('/api/users',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'walletDonate',username,amount,reason:'טרייד מטבעות'})});const d=await r.json();if(r.ok&&d.wallet){setWallet(d.wallet);msg.textContent='✅ המטבעות נשלחו בהצלחה.';}else msg.textContent=d.error==='insufficient_coins'?'❌ אין מספיק מטבעות.':d.error==='recipient_not_found'?'❌ המשתמש לא נמצא.':'❌ צריך להתחבר כדי לבצע טרייד.';}catch(_){msg.textContent='❌ שגיאת חיבור.';}};
+  load();
+})();
+</script>
   <script>
     (function registerProgressiveWebApp(){
       if (!('serviceWorker' in navigator)) return;

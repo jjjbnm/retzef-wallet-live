@@ -1,4 +1,4 @@
-const CACHE_NAME = 'retzef-wallet-v5-apps-tab';
+const CACHE_NAME = 'retzef-wallet-v6-focused-wallet';
 const APP_SHELL = [
   '/',
   '/index.html',
