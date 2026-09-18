@@ -1,4 +1,4 @@
-const CACHE_NAME = 'retzef-wallet-v9-wallet-balance-fallback';
+const CACHE_NAME = 'retzef-wallet-v10-wallet-syntax-fix';
 const APP_SHELL = [
   '/',
   '/index.html',
