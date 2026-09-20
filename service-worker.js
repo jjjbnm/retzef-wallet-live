@@ -1,4 +1,4 @@
-const CACHE_NAME = 'retzef-wallet-v12-yom-kippur-notice-only';
+const CACHE_NAME = 'retzef-wallet-v12-yom-kippur-notice';
 const APP_SHELL = [
   '/',
   '/index.html',
