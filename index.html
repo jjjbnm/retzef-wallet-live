@@ -24,7 +24,7 @@
   "description": "בית התמיכה הרשמי של קבוצת רצף ב-TikTok — חוקים, סטטוסים, מנויים ותשלומים.",
   "sameAs": []
 }
-function updateWalletUI(wallet){const el=document.getElementById('profileWalletBalance');if(el)el.textContent=(wallet&&Number(wallet.balance)||0)+' 🪙';}
+function updateWalletUI(wallet){const value=(wallet&&Number(wallet.balance)||0)+' 🪙';document.querySelectorAll('#profileWalletBalance,#walletBalanceHome').forEach(el=>el.textContent=value);}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -515,6 +515,14 @@ function updateWalletUI(wallet){const el=document.getElementById('profileWalletB
   @media(max-width:420px){.wallet-splash-features{gap:5px}.wallet-splash-feature{padding-inline:4px}}
   #retzefEntryTikTok{background:#111827;color:#fff}
   #retzefEntryGuest{background:transparent;color:var(--text,#161a26);border:1px solid var(--glass-border,rgba(20,23,40,.12))!important}
+
+  /* Samsung Wallet-inspired wallet home */
+  :root{--bg:#050505;--bg2:#171719;--glass:rgba(27,27,30,.96);--glass-border:rgba(255,255,255,.07);--text:#f7f7f8;--muted:#a7a7ad;--accent:#9da9d6;--accent2:#737caa;}
+  body{background:#050505;color:#f7f7f8;font-family:'Assistant',sans-serif;}
+  body::before{content:'';position:fixed;inset:0;background:radial-gradient(circle at 50% -10%,#25252a 0,transparent 38%),#050505;z-index:-2;pointer-events:none;}
+  .blob{display:none}.wrap{max-width:680px;padding:0 18px 112px}.wallet-header{padding:32px 2px 22px;text-align:initial}.wallet-topbar{display:flex;align-items:center;justify-content:space-between;direction:ltr}.wallet-brand{font-family:'Rubik',sans-serif;font-weight:800;font-size:29px;letter-spacing:-.04em;display:flex;align-items:center;gap:8px}.wallet-brand-mark{font-size:21px;color:#cfd5ff}.wallet-icon-btn{border:0;background:transparent;color:#f6f6f7;font-size:32px;line-height:1;cursor:pointer;padding:4px 8px}.wallet-greeting{background:#19191c;border-radius:30px;margin-top:24px;padding:30px 26px 25px;text-align:right;box-shadow:0 12px 38px #0008}.wallet-kicker{font-size:27px;color:#f4f4f5}.wallet-greeting h1{font-size:58px;line-height:1;margin:4px 0 8px;font-weight:500;color:#fff;letter-spacing:-.04em}.wallet-greeting p{font-size:17px;color:#b8b8bd;margin:0}.wallet-login-row{display:flex;justify-content:flex-start;align-items:center;gap:12px;margin:14px 3px 0}.wallet-link-btn{border:0;background:transparent;color:#aeb7e7;font:600 14px 'Assistant';cursor:pointer}.wallet-auth-status{font-size:12px;color:#8dd7aa}.tabs-nav{position:fixed;z-index:20;bottom:15px;top:auto;left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 30px));padding:5px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:rgba(62,62,67,.94);border:1px solid rgba(255,255,255,.09);border-radius:999px;box-shadow:0 10px 35px #000b}.tab-btn{padding:10px 5px;border-radius:999px;display:flex;flex-direction:column;gap:1px;align-items:center;font-size:12px;color:#bfc0c5}.tab-btn.active{background:#55555b;color:#fff;box-shadow:none}.nav-icon{font-size:22px;line-height:20px}.wallet-home{padding-top:4px}.wallet-primary-card{background:linear-gradient(145deg,#1d1d21,#151517);border:1px solid #29292d;border-radius:28px;padding:24px 25px 18px;min-height:260px;box-shadow:0 18px 40px #0008}.wallet-card-topline{display:flex;justify-content:space-between;align-items:center;font-size:17px;color:#f4f4f5}.wallet-more-btn{background:transparent;color:#a6a6ab;border:0;font-size:20px;letter-spacing:2px}.wallet-card-subtitle{color:#96969d;margin-top:2px;font-size:15px}.wallet-balance-label{color:#9a9aa1;font-size:13px;margin-top:50px}.wallet-balance{font-family:'Rubik';font-size:48px;font-weight:800;display:flex;direction:ltr;align-items:center;justify-content:flex-end;gap:10px}.wallet-coin{font-size:32px}.wallet-card-footer{margin-top:22px;padding-top:13px;border-top:1px solid #36363a;color:#96969d;font-size:12px;display:flex;justify-content:space-between}.wallet-check{width:21px;height:21px;border-radius:50%;display:grid;place-items:center;background:#91a5df;color:#111;font-weight:800}.wallet-section-heading{display:flex;align-items:center;gap:13px;margin:32px 8px 18px;color:#a3a3aa}.wallet-section-heading h2{font-size:16px;font-weight:700;white-space:nowrap}.wallet-dotted-line{height:2px;flex:1;background:repeating-linear-gradient(90deg,#79797e 0 3px,transparent 3px 8px);opacity:.65}.wallet-shortcuts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.wallet-shortcut{background:transparent;border:0;color:#f7f7f8;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;cursor:pointer;font:inherit}.wallet-shortcut strong{font-size:13px;font-weight:600;line-height:1.2}.wallet-shortcut small{font-size:11px;color:#8e8e95;line-height:1.15}.shortcut-icon{width:53px;height:53px;border-radius:15px;display:grid;place-items:center;font-size:24px;color:#111;margin-bottom:2px}.shortcut-pink{background:#d57b9b}.shortcut-orange{background:#d99248}.shortcut-purple{background:#8584bd}.shortcut-blue{background:#7a92c6}.wallet-promo,.wallet-list-row{width:100%;border:0;color:#f7f7f8;background:#19191c;border-radius:28px;cursor:pointer;font:inherit}.wallet-promo{display:flex;justify-content:space-between;align-items:center;padding:17px 23px;margin:31px 0 16px;font-size:20px;font-weight:700}.promo-icon{width:40px;height:40px;border-radius:12px;background:#b3bfdc;display:grid;place-items:center;font-size:20px}.wallet-quick-list{display:flex;flex-direction:column;gap:9px}.wallet-list-row{display:flex;align-items:center;gap:13px;padding:15px 18px;text-align:right}.wallet-list-row span:nth-child(2){display:flex;flex-direction:column;gap:2px;flex:1}.wallet-list-row strong{font-size:15px}.wallet-list-row small{color:#929299;font-size:12px}.wallet-list-row b{font-size:24px;color:#9da4c9;font-weight:400}.list-icon{width:38px;height:38px;border-radius:12px;background:#9ca8cf;color:#18181b;display:grid;place-items:center;font-size:21px}.tab-panel:not(#home){padding-top:20px}.tab-panel:not(#home) .sec-title,.tab-panel:not(#home) .eyebrow,.tab-panel:not(#home) .sec-sub{color:#f7f7f8}.tab-panel:not(#home) .glass{background:#19191c;border-color:#2a2a2e}.btn{border-radius:14px}.profile-avatar{top:24px;right:18px;z-index:25}.profile-menu{z-index:30}
+  @media(max-width:480px){.wrap{padding-inline:14px}.wallet-brand{font-size:26px}.wallet-greeting{padding:25px 21px}.wallet-greeting h1{font-size:50px}.wallet-primary-card{min-height:245px;padding-inline:20px}.wallet-balance{font-size:42px}.wallet-shortcuts{gap:5px}.wallet-shortcut strong{font-size:11px}.shortcut-icon{width:48px;height:48px}}
+
 </style>
 </head>
 <body class="wallet-focus-mode">
@@ -703,104 +711,57 @@ function updateWalletUI(wallet){const el=document.getElementById('profileWalletB
     </div>
     <a class="wallet-back-link" href="https://retzef-pwa-public-helpme9284772-7829s-projects.vercel.app/" target="_blank" rel="noopener">🏠 לפתיחת אפליקציית רצף</a>
   </main>
-  <header>
-    <div class="badge glass"><span class="dot"></span> <span data-i18n="hero_badge">קהילת רצף · TikTok</span></div>
-    <p style="margin-top:8px; font-size:13px; color:var(--muted);">👑 <span data-i18n="hero_owner_label">בעלים</span>: <b style="color:var(--text);">הבאן המקורי</b></p>
-    <p id="userGreeting" style="margin-top:4px; font-size:13px; color:var(--muted); display:none;"></p>
-    <h1>רצף</h1>
-    <p data-i18n="hero_subtitle">בית התמיכה הרשמי של הקבוצה — חוקים, סטטוסים, מנויים והתחברות, במקום אחד.</p>
-    <div class="badge glass" style="margin-top:16px; font-weight:700;">🔥 <span data-i18n="hero_streak_label">רצף</span>: <span id="streakDays">335</span> <span data-i18n="hero_days_label">ימים</span></div>
-    <div class="cta-row">
-      <button type="button" id="tiktokLoginBtn" class="btn btn-tiktok">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
-        <span data-i18n="hero_login_btn">התחברות עם TikTok</span>
-      </button>
-      <button type="button" id="joinWebsiteBtn" class="btn btn-ghost glass">הצטרפות דרך האפליקציה</button>
-      <a href="#" data-target="contact" class="btn btn-ghost glass tab-jump" data-i18n="hero_tiktok_page_btn">עמוד TikTok של רצף</a>
-      <a href="#" data-target="status" class="btn btn-ghost glass tab-jump" data-i18n="hero_check_status_btn">בדיקת סטטוס</a>
+  <header class="wallet-header">
+    <div class="wallet-topbar">
+      <button type="button" class="wallet-icon-btn" id="walletMenuBtn" aria-label="פתיחת תפריט">⋮</button>
+      <div class="wallet-brand"><span class="wallet-brand-mark">✦</span><span>Samsung Wallet</span></div>
+      <button type="button" class="wallet-icon-btn" id="tiktokLoginBtn" aria-label="התחברות עם TikTok">♧</button>
     </div>
-    <p id="tiktokAuthStatus" style="margin-top:14px; font-size:13.5px; color:var(--muted); display:none;"></p>
-    <p style="margin-top:10px; font-size:12.5px; color:var(--muted); max-width:420px; margin-inline:auto;">
-      ההתחברות מבקשת רק את השם הציבורי שלכם ב-TikTok, כדי להציג "מחובר בתור @שם".
-      אין לה גישה לפרסום, הודעות, עוקבים או כל פעולה בחשבון שלכם.
-    </p>
+    <div class="wallet-greeting">
+      <span class="wallet-kicker">הארנק שלי</span>
+      <h1>רצף</h1>
+      <p id="userGreeting">עיין בכל הפריטים שלך במקום אחד.</p>
+    </div>
+    <div class="wallet-login-row">
+      <button type="button" id="joinWebsiteBtn" class="wallet-link-btn">הצטרפות דרך האפליקציה</button>
+      <span id="tiktokAuthStatus" class="wallet-auth-status" aria-live="polite"></span>
+    </div>
   </header>
 
-  <nav class="tabs-nav glass">
-    <button class="tab-btn active" data-target="home" data-i18n="nav_home">🏠 בית</button>
-    <button class="tab-btn" data-target="status" data-i18n="nav_status">🟢 סטטוס</button>
-    <button class="tab-btn" data-target="rules" data-i18n="nav_rules">📜 חוקים</button>
-    <button class="tab-btn protected-tab" data-target="subs" data-i18n="nav_subs">💳 מנויים</button>
-    <button class="tab-btn" data-target="team" data-i18n="nav_team">👥 בעלים ומנהלים</button>
-    <button class="tab-btn" data-target="scope" data-i18n="nav_scope">🎂 גיל ותנאים</button>
-    <button class="tab-btn protected-tab" data-target="shop" data-i18n="nav_shop">🛍️ חנות</button>
-    <button class="tab-btn" data-target="apps">📱 אפליקציות</button>
-    <button class="tab-btn" data-target="settings" data-i18n="nav_settings">⚙️ הגדרות</button>
-    <button class="tab-btn" data-target="about" data-i18n="nav_about">ℹ️ אודות וגרסה</button>
-    <button class="tab-btn" data-target="contact" data-i18n="nav_contact">📩 יצירת קשר</button>
-    <button class="tab-btn" data-target="support">🆘 תמיכה</button>
-      <button class="tab-btn protected-tab" data-target="boards">📢 מודעות</button>
-</nav>
+  <nav class="tabs-nav glass" aria-label="ניווט ראשי">
+    <button class="tab-btn active" data-target="home"><span class="nav-icon">⌂</span><span>הכול</span></button>
+    <button class="tab-btn" data-target="shop"><span class="nav-icon">▣</span><span>גישה מהירה</span></button>
+    <button class="tab-btn" data-target="status"><span class="nav-icon">◉</span><span>סטטוס</span></button>
+    <button class="tab-btn" data-target="settings"><span class="nav-icon">⚙</span><span>הגדרות</span></button>
+  </nav>
 
   <!-- HOME -->
-  <section id="home" class="tab-panel active">
-    <span class="eyebrow" data-i18n="home_eyebrow">ברוכים הבאים</span>
-    <h2 class="sec-title" data-i18n="home_title">בית</h2>
-    <p class="sec-sub" data-i18n="home_sub">כל מה שצריך לדעת על רצף, במקום אחד.</p>
-
-    <div class="shop-grid" style="margin-bottom:20px;">
-      <div class="shop-item glass tab-jump" data-target="status" style="cursor:pointer;">
-        <span class="name">🟢 סטטוס</span>
-        <span class="note">בדקו איפה אתם עומדים בקבוצה</span>
-      </div>
-      <div class="shop-item glass tab-jump" data-target="rules" style="cursor:pointer;">
-        <span class="name">📜 חוקים</span>
-        <span class="note">כל חוקי הקבוצה</span>
-      </div>
-      <div class="shop-item glass tab-jump" data-target="subs" style="cursor:pointer;">
-        <span class="name">💳 מנויים</span>
-        <span class="note">רצף פלוס, מנוי סרטון ועוד</span>
-      </div>
-      <div class="shop-item glass tab-jump" data-target="shop" style="cursor:pointer;">
-        <span class="name">🛍️ חנות</span>
-        <span class="note">תגים, שינויים ועוד</span>
-      </div>
+  <section id="home" class="tab-panel active wallet-home">
+    <div class="wallet-primary-card">
+      <div class="wallet-card-topline"><span>הארנק שלי רצף</span><button type="button" class="wallet-more-btn" id="walletCardMore">•••</button></div>
+      <div class="wallet-card-subtitle">עיין בכל הפריטים שלך.</div>
+      <div class="wallet-balance-label">מטבעות רצף</div>
+      <div class="wallet-balance"><span id="walletBalanceHome">0</span><span class="wallet-coin">🪙</span></div>
+      <div class="wallet-card-footer"><span>מחובר בצורה מאובטחת</span><span class="wallet-check">✓</span></div>
     </div>
 
-    <div class="settings-card glass">
-      <h3>🆘 מצאתם בעיה?</h3>
-      <p style="font-size:13px; color:var(--muted); margin-bottom:14px;">אם משהו לא עובד באפליקציה או בקבוצה, אפשר לפנות ישירות.</p>
-      <a href="https://www.tiktok.com/@retzef_support?_r=1&_t=ZS-99MugNRg5zk" target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">✉️ עלי לפנות לתמיכה</a>
+    <div class="wallet-section-heading"><h2>עוד דברים שאפשר להוסיף</h2><span class="wallet-dotted-line"></span></div>
+    <div class="wallet-shortcuts">
+      <button type="button" class="wallet-shortcut tab-jump" data-target="contact"><span class="shortcut-icon shortcut-pink">▤</span><strong>חברויות</strong><small>פרטים וחברים</small></button>
+      <button type="button" class="wallet-shortcut tab-jump" data-target="shop"><span class="shortcut-icon shortcut-orange">◆</span><strong>שוברים</strong><small>מימוש קוד</small></button>
+      <button type="button" class="wallet-shortcut tab-jump" data-target="rules"><span class="shortcut-icon shortcut-purple">●</span><strong>מפתחות Digital Key</strong><small>חוקים והרשאות</small></button>
+      <button type="button" class="wallet-shortcut tab-jump" data-target="subs"><span class="shortcut-icon shortcut-blue">◆</span><strong>כרטיס עלייה למטוס</strong><small>מנויים וגישה</small></button>
+    </div>
+
+    <button type="button" class="wallet-promo tab-jump" data-target="shop"><span>מבצעי קידום</span><span class="promo-icon">🎁</span></button>
+
+    <div class="wallet-quick-list">
+      <button type="button" class="wallet-list-row tab-jump" data-target="status"><span class="list-icon">◉</span><span><strong>בדיקת הסטטוס שלי</strong><small>בדיקה מהירה בקהילה</small></span><b>‹</b></button>
+      <button type="button" class="wallet-list-row tab-jump" data-target="contact"><span class="list-icon">✉</span><span><strong>מרכז התמיכה</strong><small>פנייה ל־retzef_support</small></span><b>‹</b></button>
+      <button type="button" class="wallet-list-row tab-jump" data-target="settings"><span class="list-icon">⚙</span><span><strong>הגדרות חשבון</strong><small>פרופיל, שפה והתראות</small></span><b>‹</b></button>
     </div>
   </section>
 
-  <!-- APPS -->
-  <section id="apps" class="tab-panel">
-    <span class="eyebrow">מרכז האפליקציות</span>
-    <h2 class="sec-title">📱 אפליקציות</h2>
-    <p class="sec-sub">התקינו את אפליקציות רצף במסך הבית וקבלו גישה מהירה לכל השירותים.</p>
-    <div class="apps-grid">
-      <article class="app-card">
-        <img src="https://retzef-pwa-public-helpme9284772-7829s-projects.vercel.app/icons/icon-512.png" alt="לוגו רצף" loading="lazy">
-        <h3>רצף</h3>
-        <p>בית התמיכה, הסטטוס, החוקים והעדכונים של קהילת רצף.</p>
-        <a class="btn btn-primary" href="https://retzef-pwa-public-helpme9284772-7829s-projects.vercel.app/" target="_blank" rel="noopener">פתחו והתקינו</a>
-      </article>
-      <article class="app-card">
-        <img src="/icons/icon-512.png" alt="לוגו הארנק שלי רצף" loading="lazy">
-        <h3>הארנק שלי</h3>
-        <p>מטבעות, טרייד, קודים ויתרת הארנק של משתמשי רצף.</p>
-        <a class="btn btn-primary" href="https://retzef-wallet-live-helpme9284772-7829s-projects.vercel.app/" target="_blank" rel="noopener">פתחו והתקינו</a>
-      </article>
-      <article class="app-card">
-        <img src="https://retzef-events-helpme9284772-7829s-projects.vercel.app/icons/icon-512.png" alt="לוגו Retzef events" loading="lazy">
-        <h3>Retzef events</h3>
-        <p>אירועים, מפגשים, שידורים ועדכונים של קהילת רצף.</p>
-        <a class="btn btn-primary" href="https://retzef-events-helpme9284772-7829s-projects.vercel.app/" target="_blank" rel="noopener">פתחו והתקינו</a>
-      </article>
-    </div>
-    <div class="apps-note">פתחו את האפליקציה הרצויה, התחברו אם צריך, ואז בחרו בדפדפן <b>התקן אפליקציה</b> או <b>הוסף למסך הבית</b>.</div>
-  </section>
   <!-- STATUS LADDER -->
   <section id="status" class="tab-panel">
     <span class="eyebrow" data-i18n="status_eyebrow">מערכת סטטוס</span>
