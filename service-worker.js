@@ -1,4 +1,4 @@
-const CACHE_NAME = 'retzef-wallet-v11-events-app';
+const CACHE_NAME = 'retzef-wallet-v12-reference-app';
 const APP_SHELL = [
   '/',
   '/index.html',
