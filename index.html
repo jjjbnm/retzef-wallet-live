@@ -527,6 +527,11 @@ function updateWalletUI(wallet){const value=(wallet&&Number(wallet.balance)||0)+
   /* closer reference match */
   .wallet-topbar{direction:rtl;position:relative;min-height:42px}.wallet-brand{position:absolute;right:48px;left:48px;justify-content:center;font-size:28px}.wallet-brand-mark{display:none}.wallet-topbar::before,.wallet-topbar::after{content:'';position:absolute;top:12px;width:12px;height:12px;border-radius:50%;background:#f06422;box-shadow:0 0 12px rgba(240,100,34,.22)}.wallet-topbar::before{right:0}.wallet-topbar::after{right:68px}.wallet-topbar .wallet-icon-btn:first-child{font-size:34px;z-index:1}.wallet-topbar .wallet-icon-btn:last-child{font-size:28px;z-index:1}.wallet-greeting{margin-top:27px;min-height:260px;padding:32px 30px 23px;border-radius:30px;display:flex;flex-direction:column;align-items:flex-start;text-align:right}.wallet-kicker{font-size:39px;line-height:1.05;width:100%;text-align:right}.wallet-greeting h1{font-size:66px;align-self:flex-end;margin:0 0 2px}.wallet-greeting p{font-size:18px;align-self:flex-end}.wallet-login-row{display:none}.wallet-balance-label{margin-top:38px}.wallet-balance{font-size:52px}.wallet-card-footer{margin-top:auto}.wallet-shortcuts{row-gap:27px}.wallet-shortcut:nth-child(4){grid-column:1 / -1;justify-self:center;margin-top:5px;width:42%}.wallet-promo{margin-top:34px}.tabs-nav{width:min(470px,calc(100% - 60px));grid-template-columns:repeat(2,1fr);padding:5px;background:#3d3d42}.tab-btn{font-size:14px;flex-direction:row;gap:8px;padding:12px 9px}.nav-icon{font-size:23px}.wallet-list-row{min-height:64px}
 
+
+  /* exact visual reference treatment */
+  .wrap{max-width:720px;padding:0 20px 115px}.wallet-header{padding:26px 0 20px}.wallet-brand{font-size:30px;font-weight:800}.wallet-greeting{display:none}.wallet-primary-card{min-height:965px;border-radius:34px;padding:42px 31px 0;background:#1a1a1d;border:1px solid #252529;box-shadow:none;position:relative}.wallet-card-topline{font-size:38px;line-height:1.1;justify-content:flex-start;gap:18px;font-weight:600}.wallet-more-btn{position:absolute;left:25px;top:32px;font-size:18px}.wallet-card-subtitle{font-size:21px;margin-top:8px}.wallet-pass-row{display:flex;align-items:center;justify-content:flex-start;gap:18px;margin-top:54px;margin-right:5px;direction:rtl}.wallet-pass-icon{width:70px;height:70px;border-radius:17px;background:#5e81bd;color:#111;font-size:43px;display:grid;place-items:center;transform:rotate(0deg)}.wallet-pass-row div:last-child{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:22px}.wallet-pass-row b{font-size:22px;color:#7b9edc}.wallet-card-heading{margin:92px 0 20px;flex-direction:row-reverse}.wallet-card-heading h2{font-size:24px;color:#a3a3a8}.wallet-dotted-line{background:repeating-linear-gradient(90deg,#a1a1a5 0 3px,transparent 3px 9px)}.wallet-shortcuts{grid-template-columns:repeat(3,1fr);column-gap:24px;row-gap:46px}.wallet-shortcut{gap:9px}.wallet-shortcut:nth-child(4){grid-column:2;grid-row:2;width:auto;margin:0}.shortcut-icon{width:74px;height:74px;border-radius:17px;font-size:31px}.wallet-shortcut strong{font-size:20px;color:#f1f1f3;font-weight:500;line-height:1.15}.wallet-close-card{position:absolute;bottom:29px;left:31px;right:31px;border:0;border-top:1px solid #3a3a3e;background:transparent;padding-top:27px;color:#a1a1a6;font:500 23px 'Assistant';cursor:pointer}.wallet-promo{margin:38px 0 0;padding:22px 28px;font-size:28px;min-height:89px}.promo-icon{width:48px;height:48px}.tabs-nav{bottom:16px;width:min(560px,calc(100% - 64px));height:82px}.tab-btn{font-size:19px;padding:12px}.nav-icon{font-size:27px}.wallet-home+.tab-panel{}.tab-panel:not(#home){padding-top:20px}
+  @media(max-width:480px){.wallet-primary-card{min-height:760px;padding:31px 22px 0}.wallet-card-topline{font-size:30px}.wallet-card-subtitle{font-size:17px}.wallet-pass-row{margin-top:40px}.wallet-card-heading{margin-top:68px}.wallet-card-heading h2{font-size:19px}.wallet-shortcuts{column-gap:10px;row-gap:34px}.shortcut-icon{width:58px;height:58px}.wallet-shortcut strong{font-size:14px}.wallet-close-card{font-size:18px;bottom:21px}.wallet-promo{font-size:22px;min-height:68px}.tabs-nav{height:68px}.tab-btn{font-size:15px}}
+
 </style>
 </head>
 <body class="wallet-focus-mode">
@@ -740,28 +745,19 @@ function updateWalletUI(wallet){const value=(wallet&&Number(wallet.balance)||0)+
   <!-- HOME -->
   <section id="home" class="tab-panel active wallet-home">
     <div class="wallet-primary-card">
-      <div class="wallet-card-topline"><span>הארנק שלי רצף</span><button type="button" class="wallet-more-btn" id="walletCardMore">•••</button></div>
+      <div class="wallet-card-topline"><span>הארנק שלי רצף</span><button type="button" class="wallet-more-btn">•••</button></div>
       <div class="wallet-card-subtitle">עיין בכל הפריטים שלך.</div>
-      <div class="wallet-balance-label">מטבעות רצף</div>
-      <div class="wallet-balance"><span id="walletBalanceHome">0</span><span class="wallet-coin">🪙</span></div>
-      <div class="wallet-card-footer"><span>מחובר בצורה מאובטחת</span><span class="wallet-check">✓</span></div>
+      <div class="wallet-pass-row"><div class="wallet-pass-icon">✓</div><div><b>2</b><span>Samsung Pass</span></div></div>
+      <div class="wallet-section-heading wallet-card-heading"><h2>עוד דברים שאפשר להוסיף</h2><span class="wallet-dotted-line"></span></div>
+      <div class="wallet-shortcuts">
+        <button type="button" class="wallet-shortcut tab-jump" data-target="contact"><span class="shortcut-icon shortcut-pink">▥</span><strong>חברויות</strong></button>
+        <button type="button" class="wallet-shortcut tab-jump" data-target="shop"><span class="shortcut-icon shortcut-orange">◆</span><strong>שוברים</strong></button>
+        <button type="button" class="wallet-shortcut tab-jump" data-target="rules"><span class="shortcut-icon shortcut-purple">●</span><strong>מפתחות Digital<br>Key</strong></button>
+        <button type="button" class="wallet-shortcut tab-jump" data-target="subs"><span class="shortcut-icon shortcut-blue">◆</span><strong>כרטיס עלייה למטוס</strong></button>
+      </div>
+      <button type="button" class="wallet-close-card">סגור</button>
     </div>
-
-    <div class="wallet-section-heading"><h2>עוד דברים שאפשר להוסיף</h2><span class="wallet-dotted-line"></span></div>
-    <div class="wallet-shortcuts">
-      <button type="button" class="wallet-shortcut tab-jump" data-target="contact"><span class="shortcut-icon shortcut-pink">▤</span><strong>חברויות</strong><small>פרטים וחברים</small></button>
-      <button type="button" class="wallet-shortcut tab-jump" data-target="shop"><span class="shortcut-icon shortcut-orange">◆</span><strong>שוברים</strong><small>מימוש קוד</small></button>
-      <button type="button" class="wallet-shortcut tab-jump" data-target="rules"><span class="shortcut-icon shortcut-purple">●</span><strong>מפתחות Digital Key</strong><small>חוקים והרשאות</small></button>
-      <button type="button" class="wallet-shortcut tab-jump" data-target="subs"><span class="shortcut-icon shortcut-blue">◆</span><strong>כרטיס עלייה למטוס</strong><small>מנויים וגישה</small></button>
-    </div>
-
     <button type="button" class="wallet-promo tab-jump" data-target="shop"><span>מבצעי קידום</span><span class="promo-icon">🎁</span></button>
-
-    <div class="wallet-quick-list">
-      <button type="button" class="wallet-list-row tab-jump" data-target="status"><span class="list-icon">◉</span><span><strong>בדיקת הסטטוס שלי</strong><small>בדיקה מהירה בקהילה</small></span><b>‹</b></button>
-      <button type="button" class="wallet-list-row tab-jump" data-target="contact"><span class="list-icon">✉</span><span><strong>מרכז התמיכה</strong><small>פנייה ל־retzef_support</small></span><b>‹</b></button>
-      <button type="button" class="wallet-list-row tab-jump" data-target="settings"><span class="list-icon">⚙</span><span><strong>הגדרות חשבון</strong><small>פרופיל, שפה והתראות</small></span><b>‹</b></button>
-    </div>
   </section>
 
   <!-- STATUS LADDER -->
