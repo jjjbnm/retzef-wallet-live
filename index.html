@@ -547,6 +547,15 @@ function updateWalletUI(wallet){const value=(wallet&&Number(wallet.balance)||0)+
   @keyframes anniversaryConfetti{0%{background-position:0 0,0 0,0 0,0 0}100%{background-position:35px 100px,-50px 80px,60px 90px,-40px 120px}}
   @media (prefers-reduced-motion:reduce){.anniversary-balloon,.anniversary-confetti{animation:none}}
 
+
+  .assistant-card{padding:24px;max-width:760px;margin:0 auto}
+  .assistant-messages{min-height:220px;max-height:420px;overflow:auto;display:flex;flex-direction:column;gap:10px;margin:16px 0;padding:14px;border-radius:16px;background:var(--bg2);border:1px solid var(--glass-border)}
+  .assistant-message{padding:11px 14px;border-radius:14px;line-height:1.55;white-space:pre-wrap;max-width:88%}
+  .assistant-message.bot{align-self:flex-start;background:rgba(91,140,255,.12)}
+  .assistant-message.user{align-self:flex-end;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+  .assistant-form{display:flex;gap:9px}.assistant-form input{flex:1;min-width:0;padding:13px 14px;border-radius:13px;border:1px solid var(--glass-border);background:var(--bg2);color:var(--text);font:inherit}.assistant-form button{border:0;border-radius:13px;padding:0 20px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font:700 15px Assistant;cursor:pointer}
+  @media(max-width:520px){.assistant-form{flex-direction:column}.assistant-form button{padding:12px}}
+
 </style>
 </head>
 <body class="wallet-focus-mode">
@@ -785,6 +794,20 @@ function updateWalletUI(wallet){const value=(wallet&&Number(wallet.balance)||0)+
   </section>
 
   <!-- STATUS LADDER -->
+
+  <section id="assistant" class="tab-panel">
+    <span class="eyebrow">עוזר חכם</span>
+    <h2 class="sec-title">🤖 עוזר AI של רצף</h2>
+    <p class="sec-sub">שאלו שאלה על הקהילה, החוקים, הסטטוס, התמיכה או השימוש באתר.</p>
+    <div class="assistant-card glass">
+      <div id="assistantMessages" class="assistant-messages" aria-live="polite"><div class="assistant-message bot">שלום! אני עוזר ה־AI של רצף. איך אפשר לעזור?</div></div>
+      <form id="assistantForm" class="assistant-form"><input id="assistantInput" type="text" autocomplete="off" placeholder="כתבו שאלה..." aria-label="שאלה לעוזר AI" required><button type="submit">שליחה</button></form>
+    </div>
+  </section>
+  <script>
+  (()=>{const form=document.getElementById('assistantForm');if(!form)return;const input=document.getElementById('assistantInput'),messages=document.getElementById('assistantMessages');const add=(text,who)=>{const el=document.createElement('div');el.className='assistant-message '+who;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;return el;};const fallback=q=>{const t=q.toLowerCase();if(/שלום|היי|הי/.test(t))return 'שלום! איך אפשר לעזור?';if(/חוק/.test(t))return 'אפשר לקרוא את כללי הקהילה בטאב חוקים.';if(/סטטוס|באן/.test(t))return 'אפשר לבדוק את הסטטוס בטאב סטטוס.';if(/תמיכה|בעיה|עזרה/.test(t))return 'אפשר לפנות לצוות דרך טאב יצירת קשר או תמיכה.';if(/מנוי|תשלום|חנות/.test(t))return 'מידע על מנויים ורכישות נמצא בטאבים המתאימים באתר.';return 'לא מצאתי תשובה מדויקת. נסו לנסח את השאלה אחרת או פנו לתמיכה.';};form.addEventListener('submit',async e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';add(q,'user');const wait=add('חושב...','bot');try{const r=await fetch('/api/assistant',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q})});const d=await r.json();wait.textContent=r.ok&&d.answer?d.answer:fallback(q);}catch(_){wait.textContent=fallback(q);}});})();
+  </script>
+
   <section id="status" class="tab-panel">
     <span class="eyebrow" data-i18n="status_eyebrow">מערכת סטטוס</span>
     <h2 class="sec-title" data-i18n="status_title">איפה אתה עומד בקבוצה</h2>
